@@ -2,7 +2,7 @@ package groupFiles;
 
 import java.util.Scanner;
 
-public class VickiMain {
+public class CheeseMain {
 	static String user;
 	static Scanner input;
 	static boolean inLoop;
