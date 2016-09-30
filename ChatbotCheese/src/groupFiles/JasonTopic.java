@@ -10,8 +10,10 @@ public class JasonTopic implements Topic{
 
 	@Override
 	public boolean isTriggered(String userInput) {
-		String triggers[] = {};
-		return false;
+		String triggers[] = {"place","location","borough"};
+		for(int i = 0; i < triggers.length; i++){
+			
+		}
 	}
 
 }
