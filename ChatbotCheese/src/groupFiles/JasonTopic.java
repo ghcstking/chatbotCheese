@@ -10,7 +10,7 @@ public class JasonTopic implements Topic{
 
 	@Override
 	public boolean isTriggered(String userInput) {
-		// TODO Auto-generated method stub
+		String triggers[] = {};
 		return false;
 	}
 
