@@ -12,8 +12,11 @@ public class JasonTopic implements Topic{
 	public boolean isTriggered(String userInput) {
 		String triggers[] = {"place","location","borough"};
 		for(int i = 0; i < triggers.length; i++){
-			
+			if(VickiMain.findKeyword(userInput, triggers[i], 0) >= 0){
+				return true;
+			}
 		}
+		return false;
 	}
 
 }
