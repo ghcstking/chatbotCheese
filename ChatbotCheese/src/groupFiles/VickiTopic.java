@@ -10,7 +10,7 @@ public class VickiTopic implements Topic {
 
 	@Override
 	public boolean isTriggered(String userInput) {
-		String[] triggers = {"yes", "yeah", "absolutely"};
+		String[] triggers = {"make", "cook", "recipe"};
 		for (int i = 0; i < triggers.length; i++) {
 			if(VickiMain.findKeyword(userInput, triggers[i], 0) >= 0) {
 				return true;

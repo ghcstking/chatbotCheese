@@ -109,8 +109,8 @@ public class VickiMain {
 		input = new Scanner(System.in);
 		// initialize group classes
 		vicki = new VickiTopic();
-//		jason = new JasonTopic();
-//		afsana = new Hangry();
-//		alam = new FoodCombos();
+		jason = new JasonTopic();
+		afsana = new Hangry();
+		alam = new FoodCombos();
 	}
 }
