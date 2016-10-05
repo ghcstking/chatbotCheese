@@ -7,73 +7,68 @@ public class VickiMain {
 	static Scanner input;
 	static boolean inLoop;
 	static String response;
-//	static Topic school;
-//	static Topic like;
-//	declare group's classes
+	static Topic vicki;
+	static Topic jason;
+	static Topic afsana;
+	static Topic alam;
+	
 	public static void main(String[] args) {
 		createTopics();
 		promptName();
 		talkForever();
 	}
 	private static void promptName() {
-		print("Hello, human. I am a board covered with semiconductors and other such components"
-				+ ". What is your name?");
+		print("Hello human. I am CheeseBot and I specialize in food. What is your name?");
 		user = input.nextLine();
-		print("Awesome! I will call you user " + user + " until you terminate me.");
+		print("Awesome! I will call you " + user + " until you terminate me.");
 	}
 	public static void talkForever() {
 		inLoop = true;
-		print("Greetings, " + user + ". How are you?");
+		print("Hey, " + user + ". Do you like food?");
 		while(inLoop) {
 			response = getInput();
-			if (findKeyword(response, "good", 0) >= 0) {
-				print("I'm so happy you're good.");
-				print("Greetings, " + user + ". How are you?");
+			if(vicki.isTriggered(response)) {
+				inLoop = false;
+				vicki.talk();
 			}
-			else {
-				print("I'm sorry, I don't understand you.");		
+			if(jason.isTriggered(response)) {
+				inLoop = false;
+				jason.talk();
+			}
+			if(afsana.isTriggered(response)) {
+				inLoop = false;
+				afsana.talk();
+			}
+			if(alam.isTriggered(response)) {
+				inLoop = false;
+				alam.talk();
 			}
 		}
 	}
 	public static int findKeyword(String searchString, String key, int startIndex) {
 		String phrase = searchString.trim();
-		// trim cuts off spaces at the beginning and end
 		phrase = phrase.toLowerCase();
 		key = key.toLowerCase();
-		// print("The phrase is '" + phrase + "'");
-		// print("The key is '" + key + "'");
 		int psn = phrase.indexOf(key);
-		// print("The position found is " + psn);
-		// searches for the first time the keyword occurs
 		while (psn >= 0) {
 			String before = " ";
 			String after = " ";
 			if (psn + key.length() < phrase.length()) {
 				after = phrase.substring(psn + key.length(), psn + key.length() + 1).toLowerCase();
-				// print("The character after " + key + " is " + after);
 			}
 			if (psn > 0) {
 				before = phrase.substring(psn - 1, psn).toLowerCase();
-				// print("The character before " + key + " is " + before);
 			}
 			if (before.compareTo("a") < 0 && after.compareTo("a") < 0) {
-				// print(key + " was found at " + psn);
 				if(noNegations(phrase, psn)) {
 					return psn;		
 				}
 			}
 			psn = phrase.indexOf(key, psn+1);
-			// print(key + " was not found. Checking " + psn);
 		}
 		return -1;
 	}
 	private static boolean noNegations(String phrase, int index) {
-		// helper method - method that contributes functionality to another method 
-		// helpful if you need to do something repeatedly
-		// also makes code more readable
-		// private because it is only used by the method it is helping
-		
-		// check for words NO, NOT, NEVER, N'T
 		if (index - 3 >= 0 && phrase.substring(index - 3, index).equals("no ")) {
 			return false;
 		}
@@ -93,7 +88,7 @@ public class VickiMain {
 	}
 	public static void print(String s) {
 		String printString = "";
-		int cutoff = 35;
+		int cutoff = 80;
 		while (s.length() > 0) {
 			String currentLine = "";
 			String nextWord = "";
@@ -110,13 +105,12 @@ public class VickiMain {
 		}
 		System.out.println(printString);
 	}
-	public static void promptInput() {
-		print(user + ", try inputing a string");
-		String userInput = input.nextLine();
-		print("You typed: " + userInput);
-	}
 	public static void createTopics() {
 		input = new Scanner(System.in);
 		// initialize group classes
+		vicki = new VickiTopic();
+		jason = new JasonTopic();
+		afsana = new Hangry();
+		alam = new FoodCombos();
 	}
 }
