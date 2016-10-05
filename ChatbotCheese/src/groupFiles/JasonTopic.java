@@ -12,6 +12,7 @@ public class JasonTopic implements Topic{
 		inJasonLoop = true;
 		String[] cuisineTriggers = {"japanese","korean","chinese","indian","greek","italian",
 				"french"};
+
 		while(inJasonLoop){
 			response = VickiMain.getInput().toLowerCase();
 			
