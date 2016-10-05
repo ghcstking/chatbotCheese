@@ -17,11 +17,11 @@ public class FoodCombos implements Topic{
 				VickiMain.talkForever();
 				
 			}else{
-				if (comboResponse.indexOf(" ") > 0){
+				if (comboResponse.trim().indexOf(" ") > 0){
 					String wordA = comboResponse.substring(0,comboResponse.indexOf(" "));
 					String wordB = comboResponse.substring(comboResponse.indexOf(" ")+1);
 					
-					VickiMain.print(wordA.substring(0,0) + wordB);
+					VickiMain.print(wordA.substring(0,1) + wordB);
 				}else{
 					VickiMain.print("Seems as if you can't follow instructions, you should be replaced by a computer");	
 				}
