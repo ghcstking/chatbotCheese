@@ -5,6 +5,7 @@ import groupFiles.VickiMain;
 public class FoodCombos implements Topic{
 	private boolean inComboLoop;
 	private String comboResponse;
+	// split by vowels
 
 	@Override
 	public void talk() {
@@ -21,7 +22,7 @@ public class FoodCombos implements Topic{
 					String wordA = comboResponse.substring(0,comboResponse.indexOf(" "));
 					String wordB = comboResponse.substring(comboResponse.indexOf(" ")+1);
 					
-					VickiMain.print(wordA.substring(0,1) + wordB);
+					VickiMain.print(wordA.substring(0,1) + wordB.substring(1));
 				}else{
 					VickiMain.print("Seems as if you can't follow instructions, you should be replaced by a computer");	
 				}
