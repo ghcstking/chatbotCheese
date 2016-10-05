@@ -2,17 +2,29 @@ package groupFiles;
 
 public class JasonTopic implements Topic{
 
-	@Override
+	private boolean inJasonLoop;
+	
+	static String response;
+	
 	public void talk() {
-		// TODO Auto-generated method stub
-		
+		VickiMain.print("I can tell you about many types of cusines, such as Japanese or Italian."
+				+ " Which cuisine would you like to know about?");
+		inJasonLoop = true;
+		String[] cuisineTriggers = {"japanese","korean","chinese","indian","greek","italian",
+				"french"};
+		while(inJasonLoop){
+			response = VickiMain.getInput().toLowerCase();
+			
+			
+		}
 	}
 
 	@Override
 	public boolean isTriggered(String userInput) {
-		String triggers[] = {"place","location","borough"};
+		String[] triggers = {"cuisine","style","type"};
 		for(int i = 0; i < triggers.length; i++){
 			if(VickiMain.findKeyword(userInput, triggers[i], 0) >= 0){
+				VickiMain.print("i like");
 				return true;
 			}
 		}
