@@ -5,23 +5,30 @@ import groupFiles.VickiMain;
 public class FoodCombos implements Topic{
 	private boolean inComboLoop;
 	private String comboResponse;
+	// split by vowels
 
 	@Override
 	public void talk() {
 		inComboLoop = true;
 		while(inComboLoop){
-			VickiMain.print("Tell me 2 foods you want to combine and I'll come up for a new name for it.");
+			VickiMain.print("Tell me 2 one word foods you want to combine and I'll come up for a new name for it.");
 			comboResponse = VickiMain.getInput();
 			if (comboResponse.indexOf("stop")>= 0){
 				inComboLoop = false;
 				VickiMain.talkForever();
 				
+			}else{
+				if (comboResponse.trim().indexOf(" ") > 0){
+					String wordA = comboResponse.substring(0,comboResponse.indexOf(" "));
+					String wordB = comboResponse.substring(comboResponse.indexOf(" ")+1);
+					
+					VickiMain.print(wordA.substring(0,1) + wordB.substring(1));
+				}else{
+					VickiMain.print("Seems as if you can't follow instructions, you should be replaced by a computer");	
+				}
 			}
-			
-			
-			VickiMain.print("That's my favorite part about school too.");
-		}
 		
+		}
 	}
 
 	@Override
