@@ -12,10 +12,24 @@ public class JasonTopic implements Topic{
 		inJasonLoop = true;
 		String[] cuisineTriggers = {"japanese","korean","chinese","indian","greek","italian",
 				"french"};
+		String[] info = {"wah", "bah", "japanese"};
 
 		while(inJasonLoop){
 			response = VickiMain.getInput().toLowerCase();
-			
+			for(int i = 0; i < cuisineTriggers.length; i++)
+			{
+				if(VickiMain.findKeyword(response, cuisineTriggers[i],0) >= 0){
+					int infoReturn = VickiMain.findKeyword(response, cuisineTriggers[i],0);
+					if(infoReturn >= 0){
+						VickiMain.print(info[i]);
+					}
+				}
+				
+				else
+				{
+					VickiMain.print("Are you sure that's a cuisine");
+				}
+			}
 			
 		}
 	}
@@ -31,5 +45,6 @@ public class JasonTopic implements Topic{
 		}
 		return false;
 	}
-
+	
+	
 }
