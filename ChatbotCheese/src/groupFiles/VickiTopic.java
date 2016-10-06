@@ -1,7 +1,9 @@
 package groupFiles;
+
 public class VickiTopic implements Topic {
 	private boolean inVickiLoop;
 	private String vickiResponse;
+	private String choice;
 
 	@Override
 	public void talk() {
@@ -19,13 +21,26 @@ public class VickiTopic implements Topic {
 			if (VickiMain.findKeyword(vickiResponse, foods[i], 0) >= 0) {
 				int foodPsn = VickiMain.findKeyword(vickiResponse, foods[i], 0);
 				if (foodPsn >= 0) {
-					VickiMain.print(foods[i]);
+					choice = foods[i];
+					pickFood(choice);
 					foodFound = true;
 				}
 			}
 		}
 		if (!foodFound) {
 			VickiMain.print("I don't understand");
+		}
+	}
+	public void pickFood(String food) {
+		if (food.equals("breakfast")) {
+			VickiMain.print("Would you like pancakes or french toast?");
+			vickiResponse = VickiMain.getInput();
+			if (vickiResponse.toLowerCase().equals("pancakes")) {
+				VickiMain.print("You will need: \n 1.5 cups of flour \n 3.5 teaspoon baking powder \n 1 teaspoon salt \n 1 egg" + "\n 1.25 cups of milk \n 3 tablespoons butter \n 1 tablespoon sugar");
+			}
+			if (vickiResponse.toLowerCase().equals("french toast")) {
+				VickiMain.print("You will need: \n bread \n 2 eggs \n 2/3 cups of milk \n .25 teaspoon cinnamon");
+			}
 		}
 	}
 
