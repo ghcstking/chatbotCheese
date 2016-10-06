@@ -3,7 +3,6 @@ package groupFiles;
 public class VickiTopic implements Topic {
 	private boolean inVickiLoop;
 	private String vickiResponse;
-	private String choice;
 
 	@Override
 	public void talk() {
@@ -21,8 +20,7 @@ public class VickiTopic implements Topic {
 			if (VickiMain.findKeyword(vickiResponse, foods[i], 0) >= 0) {
 				int foodPsn = VickiMain.findKeyword(vickiResponse, foods[i], 0);
 				if (foodPsn >= 0) {
-					choice = foods[i];
-					pickFood(choice);
+					pickFood();
 					foodFound = true;
 				}
 			}
@@ -31,17 +29,89 @@ public class VickiTopic implements Topic {
 			VickiMain.print("I don't understand");
 		}
 	}
-	public void pickFood(String food) {
-		if (food.equals("breakfast")) {
+	public void pickFood() {
+		String[] pancakes = {"1 1/2 cups of flour", "1 teaspoon salt", "1 egg", 
+				"1 1/4 cups of milk", "3 tablespoons butter", "1 tablespoon sugar"};
+		String[] frenchToast = {"6 slices of bread", "2 eggs", "2/3 cups of milk", 
+				"1 teaspoon vanilla extract"};
+		String[] macCheese = {"10 oz macaroni", "2 tablespoons butter", "2 tablespoons flour",
+				"2 1/2 cups milk", "2 1/4 cup of cheese"};
+		String[] cheeseburger = {"2 meat patties", "1 teaspoon salt", "1 teaspoon pepper",
+				"2 slices of American cheese", "4 buns"};
+		String[] steak = {"2 1/2 pound steak", "salt and pepper to taste", "olive oil"};
+		String[] salmon = {"4 salmon fillets", "1/2 cup panko", "2 tablespoon olive oil",
+				"6 oz baby spinach"};
+		String[] iceCream = {"14 oz sweetened condensed milk", "2/3 cup chocolate syrup",
+				"2 cups heavy cream"};
+		String[] parfait = {"3 cups vanilla yogurt", "1 cup strawberries", "1 cup granola"};
+		
+		if (VickiMain.findKeyword(vickiResponse, "breakfast", 0) >= 0) {
 			VickiMain.print("Would you like pancakes or french toast?");
 			vickiResponse = VickiMain.getInput();
-			if (vickiResponse.toLowerCase().equals("pancakes")) {
-				VickiMain.print("You will need: \n 1.5 cups of flour \n 3.5 teaspoon baking powder \n 1 teaspoon salt \n 1 egg" + "\n 1.25 cups of milk \n 3 tablespoons butter \n 1 tablespoon sugar");
+			if (VickiMain.findKeyword(vickiResponse, "pancakes", 0) >= 0) {
+				VickiMain.print("You will need: ");
+				for (int i = 0; i < pancakes.length; i++) {
+					VickiMain.print(pancakes[i]);
+				}
 			}
-			if (vickiResponse.toLowerCase().equals("french toast")) {
-				VickiMain.print("You will need: \n bread \n 2 eggs \n 2/3 cups of milk \n .25 teaspoon cinnamon");
+			if (VickiMain.findKeyword(vickiResponse, "french toast", 0) >= 0) {
+				VickiMain.print("You will need: ");
+				for (int i = 0; i < frenchToast.length; i++) {
+					VickiMain.print(frenchToast[i]);
+				}
 			}
 		}
+		if (VickiMain.findKeyword(vickiResponse, "lunch", 0) >= 0) {
+			VickiMain.print("Would you like mac and cheese or cheeseburger?");
+			vickiResponse = VickiMain.getInput();
+			if (VickiMain.findKeyword(vickiResponse, "mac and cheese", 0) >= 0) {
+				VickiMain.print("You will need: ");
+				for (int i = 0; i < macCheese.length; i++) {
+					VickiMain.print(macCheese[i]);
+				}
+			}
+			if (VickiMain.findKeyword(vickiResponse, "cheeseburger", 0) >= 0) {
+				VickiMain.print("You will need: ");
+				for (int i = 0; i < cheeseburger.length; i++) {
+					VickiMain.print(cheeseburger[i]);
+				}
+			}
+		}
+		if (VickiMain.findKeyword(vickiResponse, "dinner", 0) >= 0) {
+			VickiMain.print("Would you like steak or salmon?");
+			vickiResponse = VickiMain.getInput();
+			if (VickiMain.findKeyword(vickiResponse, "steak", 0) >= 0) {
+				VickiMain.print("You will need: ");
+				for (int i = 0; i < steak.length; i++) {
+					VickiMain.print(steak[i]);
+				}
+			}
+			if (VickiMain.findKeyword(vickiResponse, "salmon", 0) >= 0) {
+				VickiMain.print("You will need: ");
+				for (int i = 0; i < salmon.length; i++) {
+					VickiMain.print(salmon[i]);
+				}
+			}
+		}
+		if (VickiMain.findKeyword(vickiResponse, "dessert", 0) >= 0) {
+			VickiMain.print("Would you like ice cream or parfait?");
+			vickiResponse = VickiMain.getInput();
+			if (VickiMain.findKeyword(vickiResponse, "ice cream", 0) >= 0) {
+				VickiMain.print("You will need: ");
+				for (int i = 0; i < iceCream.length; i++) {
+					VickiMain.print(iceCream[i]);
+				}
+			}
+			if (VickiMain.findKeyword(vickiResponse, "parfait", 0) >= 0) {
+				VickiMain.print("You will need: ");
+				for (int i = 0; i < parfait.length; i++) {
+					VickiMain.print(parfait[i]);
+				}
+			}
+		}
+		VickiMain.print("I hope you enjoy your food!");
+		inVickiLoop = false;
+		VickiMain.talkForever();
 	}
 
 	public boolean isTriggered(String userInput) {
