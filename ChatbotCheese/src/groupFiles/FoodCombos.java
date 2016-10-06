@@ -32,9 +32,9 @@ public class FoodCombos implements Topic{
 //							}else{
 //							
 //							}
-//						}
+//						}				
 //					}
-//					
+
 					VickiMain.print(wordA.substring(0,1) + wordB.substring(1) + " so... what do you think?");
 				}else{
 					VickiMain.print("Seems as if you can't follow instructions, you should be replaced by a computer");	
