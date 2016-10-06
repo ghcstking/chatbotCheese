@@ -24,8 +24,8 @@ public class VickiMain {
 	}
 	public static void talkForever() {
 		inLoop = true;
-		print("Hey, " + user + ". Do you like food?");
 		while(inLoop) {
+			print("Hey, " + user + ". Would you like to make food, know about cuisine, or mix food?");
 			response = getInput();
 			if(vicki.isTriggered(response)) {
 				inLoop = false;
@@ -36,7 +36,6 @@ public class VickiMain {
 				jason.talk();
 			}
 			if(afsana.isTriggered(response)) {
-				inLoop = false;
 				afsana.talk();
 			}
 			if(alam.isTriggered(response)) {
