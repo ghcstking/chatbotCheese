@@ -3,7 +3,6 @@ package groupFiles;
 public class VickiTopic implements Topic {
 	private boolean inVickiLoop;
 	private String vickiResponse;
-	private String conversation;
 	private String choice;
 
 	@Override
