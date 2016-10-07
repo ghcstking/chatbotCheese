@@ -6,7 +6,8 @@ public class VickiTopic implements Topic {
 
 	@Override
 	public void talk() {
-		VickiMain.print("What kind of food do you want to make? Breakfast, lunch, dinner, or dessert?");
+		VickiMain.print("I know how to cook a thing or two. "
+				+ "What kind of food do you want to make? Breakfast, lunch, dinner, or dessert?");
 		inVickiLoop = true;
 		while(inVickiLoop) {
 			findFood();
@@ -18,15 +19,12 @@ public class VickiTopic implements Topic {
 		boolean foodFound = false;
 		for (int i = 0; i < foods.length; i++) {
 			if (VickiMain.findKeyword(vickiResponse, foods[i], 0) >= 0) {
-				int foodPsn = VickiMain.findKeyword(vickiResponse, foods[i], 0);
-				if (foodPsn >= 0) {
-					pickFood();
-					foodFound = true;
-				}
+				foodFound = true;
+				pickFood();
 			}
 		}
 		if (!foodFound) {
-			VickiMain.print("I don't understand");
+			VickiMain.print("Sorry? Breakfast, lunch, dinner, or dessert?");
 		}
 	}
 	public void pickFood() {
@@ -45,6 +43,7 @@ public class VickiTopic implements Topic {
 				"2 cups heavy cream"};
 		String[] parfait = {"3 cups vanilla yogurt", "1 cup strawberries", "1 cup granola"};
 		
+		boolean found = false;
 		if (VickiMain.findKeyword(vickiResponse, "breakfast", 0) >= 0) {
 			VickiMain.print("Would you like pancakes or french toast?");
 			vickiResponse = VickiMain.getInput();
@@ -53,30 +52,36 @@ public class VickiTopic implements Topic {
 				for (int i = 0; i < pancakes.length; i++) {
 					VickiMain.print(pancakes[i]);
 				}
+				found = true;
 			}
 			if (VickiMain.findKeyword(vickiResponse, "french toast", 0) >= 0) {
 				VickiMain.print("You will need: ");
 				for (int i = 0; i < frenchToast.length; i++) {
 					VickiMain.print(frenchToast[i]);
 				}
+				found = true;
 			}
 		}
+		
 		if (VickiMain.findKeyword(vickiResponse, "lunch", 0) >= 0) {
-			VickiMain.print("Would you like mac and cheese or cheeseburger?");
+			VickiMain.print("Would you like mac and cheese or a cheeseburger?");
 			vickiResponse = VickiMain.getInput();
 			if (VickiMain.findKeyword(vickiResponse, "mac and cheese", 0) >= 0) {
 				VickiMain.print("You will need: ");
 				for (int i = 0; i < macCheese.length; i++) {
 					VickiMain.print(macCheese[i]);
 				}
+				found = true;
 			}
 			if (VickiMain.findKeyword(vickiResponse, "cheeseburger", 0) >= 0) {
 				VickiMain.print("You will need: ");
 				for (int i = 0; i < cheeseburger.length; i++) {
 					VickiMain.print(cheeseburger[i]);
 				}
+				found = true;
 			}
 		}
+		
 		if (VickiMain.findKeyword(vickiResponse, "dinner", 0) >= 0) {
 			VickiMain.print("Would you like steak or salmon?");
 			vickiResponse = VickiMain.getInput();
@@ -85,14 +90,17 @@ public class VickiTopic implements Topic {
 				for (int i = 0; i < steak.length; i++) {
 					VickiMain.print(steak[i]);
 				}
+				found = true;
 			}
 			if (VickiMain.findKeyword(vickiResponse, "salmon", 0) >= 0) {
 				VickiMain.print("You will need: ");
 				for (int i = 0; i < salmon.length; i++) {
 					VickiMain.print(salmon[i]);
 				}
+				found = true;
 			}
 		}
+		
 		if (VickiMain.findKeyword(vickiResponse, "dessert", 0) >= 0) {
 			VickiMain.print("Would you like ice cream or parfait?");
 			vickiResponse = VickiMain.getInput();
@@ -101,17 +109,24 @@ public class VickiTopic implements Topic {
 				for (int i = 0; i < iceCream.length; i++) {
 					VickiMain.print(iceCream[i]);
 				}
+				found = true;
 			}
 			if (VickiMain.findKeyword(vickiResponse, "parfait", 0) >= 0) {
 				VickiMain.print("You will need: ");
 				for (int i = 0; i < parfait.length; i++) {
 					VickiMain.print(parfait[i]);
 				}
+				found = true;
 			}
 		}
-		VickiMain.print("I hope you enjoy your food!");
-		inVickiLoop = false;
-		VickiMain.talkForever();
+		if (found) {
+			VickiMain.print("I hope you enjoy your food!");
+			inVickiLoop = false;
+			VickiMain.talkForever();
+		}
+		if(!found) {
+			VickiMain.print("You just ruined the flow! Would you like breakfast, lunch, dinner, or dessert?");
+		}
 	}
 
 	public boolean isTriggered(String userInput) {
