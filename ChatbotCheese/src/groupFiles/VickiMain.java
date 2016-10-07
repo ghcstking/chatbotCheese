@@ -3,6 +3,8 @@ package groupFiles;
 import java.util.Scanner;
 
 public class VickiMain {
+	static String lastResponse;
+	static int repCount = 0;
 	static String user;
 	static Scanner input;
 	static boolean inLoop;
@@ -11,6 +13,7 @@ public class VickiMain {
 	static Topic jason;
 	static Topic afsana;
 	static Topic alam;
+	
 	
 	public static void main(String[] args) {
 		createTopics();
@@ -42,6 +45,8 @@ public class VickiMain {
 				inLoop = false;
 				alam.talk();
 			}
+			
+			checkRep();
 		}
 	}
 	public static int findKeyword(String searchString, String key, int startIndex) {
@@ -111,5 +116,25 @@ public class VickiMain {
 		jason = new JasonTopic();
 		afsana = new Hangry();
 		alam = new FoodCombos();
+	}
+	
+	public static void checkRep(){
+		String[] randomResponse = {"Um, you've said that already...", "Didn't you just say that? You should say something new for once.", "This is getting boring..."};
+		String[] annoyedResponse = {"Can you not do that? It's irritating.", "I'm about to just terminate myself and not talk to you.",
+				"This is such a waste of time. STOP REPEATNG YOURSELF!"};
+		int responseInt = (int) (Math.random() * 3);
+		if(response.equals(lastResponse) && repCount <= 3){
+			print(randomResponse[responseInt]);
+			repCount++;
+			System.out.println(repCount);
+		}
+		else{
+			if(response.equals(lastResponse) && repCount > 3){
+				print(annoyedResponse[responseInt]);
+				System.out.println(repCount);
+			}
+		}
+		
+		lastResponse = response;
 	}
 }
