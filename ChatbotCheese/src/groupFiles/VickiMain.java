@@ -126,12 +126,10 @@ public class VickiMain {
 		if(response.equals(lastResponse) && repCount <= 3){
 			print(randomResponse[responseInt]);
 			repCount++;
-			System.out.println(repCount);
 		}
 		else{
 			if(response.equals(lastResponse) && repCount > 3){
 				print(annoyedResponse[responseInt]);
-				System.out.println(repCount);
 			}
 		}
 		
