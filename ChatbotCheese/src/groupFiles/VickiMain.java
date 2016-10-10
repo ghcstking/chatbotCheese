@@ -70,7 +70,7 @@ public class VickiMain {
 			}
 			psn = phrase.indexOf(key, psn+1);
 		}
-		return -1;dsad
+		return -1;
 	}
 	private static boolean noNegations(String phrase, int index) {
 		if (index - 3 >= 0 && phrase.substring(index - 3, index).equals("no ")) {
