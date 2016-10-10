@@ -137,7 +137,7 @@ public class VickiMain {
 	}
 	
 	public static void hangryLoop(){
-		if(afsanaCounter % 12 == 0 && afsanaCounter > 0){
+		if(afsanaCounter % 9 == 0 && afsanaCounter > 0){
 			afsana.talk();
 		}
 		
