@@ -13,6 +13,7 @@ public class VickiMain {
 	static Topic jason;
 	static Topic afsana;
 	static Topic alam;
+	static int afsanaCounter;
 	
 	
 	public static void main(String[] args) {
@@ -27,6 +28,7 @@ public class VickiMain {
 	}
 	public static void talkForever() {
 		inLoop = true;
+		
 		while(inLoop) {
 			print("Hey, " + user + ". Would you like to make food, know about cuisine, or mix food?");
 			response = getInput();
@@ -38,15 +40,13 @@ public class VickiMain {
 				inLoop = false;
 				jason.talk();
 			}
-			if(afsana.isTriggered(response)) {
-				afsana.talk();
-			}
 			if(alam.isTriggered(response)) {
 				inLoop = false;
 				alam.talk();
 			}
 			
 			checkRep();
+			hangryLoop();
 		}
 	}
 	public static int findKeyword(String searchString, String key, int startIndex) {
@@ -134,5 +134,13 @@ public class VickiMain {
 		}
 		
 		lastResponse = response;
+	}
+	
+	public static void hangryLoop(){
+		if(afsanaCounter % 12 == 0 && afsanaCounter > 0){
+			afsana.talk();
+		}
+		
+		afsanaCounter += 3;
 	}
 }
