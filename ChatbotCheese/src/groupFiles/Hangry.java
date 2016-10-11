@@ -34,7 +34,7 @@ public class Hangry implements Topic{
 			foodpsn = VickiMain.findKeyword(response, sizes[i], 0);
 				if(foodpsn >= 0){
 						if(i < 3 && i >= 0){
-							hungerlvl += 7;
+							hungerlvl += 5;asda
 						}
 						else{
 							if(i > 2){
